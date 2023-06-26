@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Song Genre Prediction</title>
+</head>
+<body>
+  <h1>Song Genre Prediction</h1>
+  <form id="genre-form" method="POST">
+    <label for="danceability">Danceability:</label>
+    <input type="number" step="0.01" id="danceability" name="danceability"><br>
+
+    <label for="energy">Energy:</label>
+    <input type="number" step="0.01" id="energy" name="energy"><br>
+
+    <label for="key">Key:</label>
+    <input type="number" id="key" name="key"><br>
+
+    <label for="loudness">Loudness:</label>
+    <input type="number" step="0.01" id="loudness" name="loudness"><br>
+
+    <label for="mode">Mode:</label>
+    <input type="number" id="mode" name="mode"><br>
+
+    <label for="speechiness">Speechiness:</label>
+    <input type="number" step="0.01" id="speechiness" name="speechiness"><br>
+
+    <label for="acousticness">Acousticness:</label>
+    <input type="number" step="0.01" id="acousticness" name="acousticness"><br>
+
+    <label for="instrumentalness">Instrumentalness:</label>
+    <input type="number" step="0.01" id="instrumentalness" name="instrumentalness"><br>
+
+    <label for="liveness">Liveness:</label>
+    <input type="number" step="0.01" id="liveness" name="liveness"><br>
+
+    <label for="valence">Valence:</label>
+    <input type="number" step="0.01" id="valence" name="valence"><br>
+
+    <label for="tempo">Tempo:</label>
+    <input type="number" step="0.01" id="tempo" name="tempo"><br>
+
+    <label for="duration_ms">Duration (in ms):</label>
+    <input type="number" id="duration_ms" name="duration_ms"><br>
+
+    <input type="submit" value="Predict Genre">
+  </form>
+  
+  <h2>Predicted Genre: <span id="predicted-genre">{{ genre }}</span></h2>
+</body>
+</html>
