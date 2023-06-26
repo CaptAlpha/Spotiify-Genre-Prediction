@@ -6,8 +6,14 @@ import pickle
 
 app = Flask(__name__)
 
-@app.route('/', methods=['GET', 'POST'])
+
+@app.route('/', methods=["GET", "POST"])
 def index():
+    return render_template('index.html')
+
+
+@app.route('/prediction', methods=['GET', 'POST'])
+def prediction():
     if request.method == 'POST':
         print(request.form)
         # Get the values from the form
@@ -25,13 +31,13 @@ def index():
         duration_ms = int(request.form['duration_ms'])
         
         # Load the saved model, scaler, and encoder
-        with open('genre_model.pkl', 'rb') as file:
+        with open('static/utils/model.pkl', 'rb') as file:
             model = pickle.load(file)
 
-        with open('scaler.pkl', 'rb') as file:
+        with open('static/utils/scaler.pkl', 'rb') as file:
             scaler = pickle.load(file)
 
-        with open('encoder.pkl', 'rb') as file:
+        with open('static/utils/encoder.pkl', 'rb') as file:
             le = pickle.load(file)
 
         # Create a function to predict the genre of a song
@@ -46,11 +52,13 @@ def index():
         # Predict the genre of the song
         genre = predict_genre(danceability, energy, key, loudness, mode, speechiness, acousticness, instrumentalness, liveness, valence, tempo, duration_ms)
         print(genre)
-        return render_template('index.html', genre=genre)
-    return render_template('index.html')
+        return render_template('prediction.html', genre=genre)
+    return render_template('prediction.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # Run on host 6000
+    app.run(port=5500, debug=True)
+
 
 
 
